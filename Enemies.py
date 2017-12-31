@@ -1,4 +1,4 @@
-class Enemy:
+class Enemy(object):
     def __init__(self, HP, STAGE, APPEARANCE):
         self.hp = HP
         self.stage = STAGE

@@ -1,4 +1,4 @@
-class Player:
+class Player(object):
     def __init__(self, HP, AMMO, APPEARANCE):
         self.hp = HP
         self.ammo = AMMO
@@ -11,3 +11,6 @@ class Player:
 
     def damage(self):
         pass
+
+    def blit(self, display):
+        display.blit(self.appe, (550, 600))
