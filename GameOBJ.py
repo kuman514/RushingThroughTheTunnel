@@ -5,17 +5,20 @@ class GameOBJ:
         self.appe = APPEARANCE
 
     def judge(self):
-        pass
+        if self.pos >= 300:
+            return True
+        else:
+            return False
 
 
 class DamagePlatform(GameOBJ):
     def __init__(self, LANE):
         super(DamagePlatform, self).__init__(LANE)
 
-    def hit(self):
+    def judge(self):
         pass
 
-    def judge(self):
+    def hit(self):
         pass
 
 

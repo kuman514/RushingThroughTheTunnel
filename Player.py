@@ -1,9 +1,10 @@
 class Player:
     def __init__(self, HP, AMMO, APPEARANCE):
         self.hp = HP
-        self.lane = 0
         self.ammo = AMMO
         self.appe = APPEARANCE
+        self.lane = 0
+        self.combo = 0
 
     def shoot(self):
         pass
