@@ -49,9 +49,11 @@ def game():
     bg = pygame.image.load('playbg.png')
     tunnel = Tunnel.Tunnel(pygame.image.load('tunnel.png'))
     player = Player.Player(100, 10, pygame.image.load('player.png'))
+    dmgobj = pygame.image.load('damageobj.png')
+    goldobj = pygame.image.load('goldobj.png')
 
-    tempObj = GameOBJ.DamagePlatform(1, pygame.image.load('damageobj.png'))
-    tempObj2 = GameOBJ.DamagePlatform(3, pygame.image.load('damageobj.png'))
+    tempObj = GameOBJ.DamagePlatform(1, dmgobj)
+    tempObj2 = GameOBJ.GoldPlatform(3, goldobj)
 
     while True:
         # Event Handle
@@ -74,22 +76,30 @@ def game():
             return
 
         # Object State Update
-        if tempObj.pos > 300:
+        # testing a gold platform and a damaging one
+        if tempObj.pos >= 300 and tempObj2.pos >= 300:
             tempObj.pos = 0
             tempObj2.pos = 0
         tempObj.forward(5)
         tempObj2.forward(5)
+        tempObj.judge(player)
+        tempObj2.judge(player)
 
-        tunnel_rot = pygame.transform.rotate(tunnel.appe, -60 * player.lane)
-        tunnel_image_pos = tunnel_rot.get_rect()
-        tunnel_image_pos.center = (640, 360)
+        # for o in (objects on each lane) :
+        #   if o.pos >= 300:
+        #       (remove o)
+        #   o.forward(5)
+        #   o.judge(player)
 
         # Draw
-        _display.blit(bg, (0,0))
-        _display.blit(tunnel_rot, tunnel_image_pos)
+        _display.blit(bg, (0, 0))
+        tunnel.blit(_display, player)
 
         tempObj.blit(_display, player)
         tempObj2.blit(_display, player)
+
+        # for o in (objects on each lane) :
+        #   o.blit(_display, player)
 
         player.blit(_display)
         pygame.display.update()

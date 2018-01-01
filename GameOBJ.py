@@ -18,9 +18,10 @@ class GameOBJ(object):
         self.pos += speedPerFrame
 
     def blit(self, display, player):
-        # scaled = pygame.transform.rotozoom(self.appe, 0, self.pos/300)
+        # scaled = pygame.transform.scale(self.appe, (120 * (self.pos/300), 120 * (self.pos/300)))
         # getting position using center
         scaledpos = self.appe.get_rect()
+        # scaledpos = scaled.get_rect()
         scaledpos.center = (640, 360)
         # calculates relative direction
         # math.sin() and math.cos() use radian angle values
@@ -32,8 +33,9 @@ class DamagePlatform(GameOBJ):
     def __init__(self, LANE, APPEARANCE):
         super(DamagePlatform, self).__init__(LANE, APPEARANCE)
 
-    def judge(self):
-        pass
+    def judge(self, player):
+        if super(DamagePlatform, self).judge() and self.lane == player.lane:
+            player.damage()
 
     def hit(self):
         pass
@@ -43,5 +45,6 @@ class GoldPlatform(GameOBJ):
     def __init__(self, LANE, APPEARANCE):
         super(GoldPlatform, self).__init__(LANE, APPEARANCE)
 
-    def judge(self):
-        pass
+    def judge(self, player):
+        if super(GoldPlatform, self).judge() and self.lane == player.lane:
+            player.getgold()

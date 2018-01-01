@@ -10,7 +10,10 @@ class Player(object):
         pass
 
     def damage(self):
-        pass
+        print 'player damaged'
+
+    def getgold(self):
+        print 'player getting gold'
 
     def blit(self, display):
         display.blit(self.appe, (550, 600))

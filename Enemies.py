@@ -9,3 +9,8 @@ class Enemy(object):
 
     def defeat(self):
         pass
+
+    def blit(self, display):
+        enemy_img_pos = self.appe.get_rect()
+        enemy_img_pos.center = (640, 360)
+        display.blit(self.appe, enemy_img_pos)
