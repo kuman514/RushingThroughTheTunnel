@@ -52,20 +52,21 @@ def game():
     dmgobj = pygame.image.load('damageobj.png')
     goldobj = pygame.image.load('goldobj.png')
 
-    tempObj = GameOBJ.DamagePlatform(1, dmgobj)
-    tempObj2 = GameOBJ.GoldPlatform(3, goldobj)
+    objTiming = 0
 
     while True:
-        # Event Handle
+        # Event Handle ===========================================
         for Event in pygame.event.get():
             if Event.type == QUIT:
                 pygame.quit()
                 sys.exit()
+        # ========================================================
 
-        # Display Init
+        # Display Init ===========================================
         _display.fill(0x000000)
+        # ========================================================
 
-        # Key Input
+        # Key Input ==============================================
         _key = pygame.key.get_pressed()
         if _key[pygame.constants.K_LEFT]:
             player.lane = (player.lane - 1) % 6
@@ -74,35 +75,40 @@ def game():
         if _key[pygame.constants.K_ESCAPE]:
             print 'return to title'
             return
+        # ========================================================
 
-        # Object State Update
-        # testing a gold platform and a damaging one
-        if tempObj.pos >= 300 and tempObj2.pos >= 300:
-            tempObj.pos = 0
-            tempObj2.pos = 0
-        tempObj.forward(5)
-        tempObj2.forward(5)
-        tempObj.judge(player)
-        tempObj2.judge(player)
+        # Object State Update ====================================
+        for l in tunnel.lanes:
+            for o in l:
+                o.forward(5)
+                o.judge(player)
+                if o.pos >= 300:
+                    tunnel.removeObj(o.lane, o)
 
-        # for o in (objects on each lane) :
-        #   if o.pos >= 300:
-        #       (remove o)
-        #   o.forward(5)
-        #   o.judge(player)
+        if objTiming >= 60:
+            # generate a new gold object
+            tunnel.generateObj((2, goldobj))
+            objTiming = 0
 
-        # Draw
+        if objTiming % 30 == 0:
+            # generate a new damage object
+            tunnel.generateObj((1, dmgobj))
+
+        objTiming += 1
+        # ========================================================
+
+        # Draw ===================================================
         _display.blit(bg, (0, 0))
         tunnel.blit(_display, player)
 
-        tempObj.blit(_display, player)
-        tempObj2.blit(_display, player)
-
-        # for o in (objects on each lane) :
-        #   o.blit(_display, player)
+        for l in tunnel.lanes:
+            for o in l:
+                o.blit(_display, player)
 
         player.blit(_display)
         pygame.display.update()
+        # ========================================================
+
         clock.tick(TargetFPS)
 
 

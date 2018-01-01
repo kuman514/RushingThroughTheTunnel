@@ -10,9 +10,15 @@ class Player(object):
         pass
 
     def damage(self):
+        # combo = 0
+        # HP -= dmg amount
         print 'player damaged'
 
     def getgold(self):
+        # combo += 1
+        # if ammo < 10:
+        #   ammo += 1
+        # HP += rst amount
         print 'player getting gold'
 
     def blit(self, display):
