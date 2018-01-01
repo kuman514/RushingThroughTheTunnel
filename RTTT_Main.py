@@ -28,7 +28,8 @@ def main():
         _key = pygame.key.get_pressed()
         if _key[pygame.constants.K_RETURN]:
             print 'game start'
-            game()
+            if game() == 1:
+                print 'game over'
         elif _key[pygame.constants.K_q]:
             print 'exit to windows'
             pygame.quit()
@@ -74,7 +75,7 @@ def game():
             player.lane = (player.lane + 1) % 6
         if _key[pygame.constants.K_ESCAPE]:
             print 'return to title'
-            return
+            return 0
         # ========================================================
 
         # Object State Update ====================================
@@ -93,6 +94,9 @@ def game():
         if objTiming % 30 == 0:
             # generate a new damage object
             tunnel.generateObj((1, dmgobj))
+
+        if player.hp <= 0:
+            return 1
 
         objTiming += 1
         # ========================================================
