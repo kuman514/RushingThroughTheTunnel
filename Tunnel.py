@@ -3,6 +3,7 @@ import random
 import time
 import GameOBJ
 
+
 class Tunnel(object):
     def __init__(self, APPEARANCE):
         self.rotation = 0

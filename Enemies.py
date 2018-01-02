@@ -5,7 +5,8 @@ class Enemy(object):
         self.appe = APPEARANCE
 
     def hit(self):
-        pass
+        print 'enemy hit'
+        # reduce enemy's hp
 
     def defeat(self):
         pass

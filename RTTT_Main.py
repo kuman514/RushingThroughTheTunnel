@@ -53,6 +53,9 @@ def game():
     dmgobj = pygame.image.load('damageobj.png')
     goldobj = pygame.image.load('goldobj.png')
 
+    enemyimg = pygame.image.load('enemy.png')
+    enemy = Enemies.Enemy(100, 1, enemyimg)
+
     objTiming = 0
 
     while True:
@@ -73,6 +76,8 @@ def game():
             player.lane = (player.lane - 1) % 6
         if _key[pygame.constants.K_RIGHT]:
             player.lane = (player.lane + 1) % 6
+        if _key[pygame.constants.K_SPACE]:
+            player.shoot(tunnel.lanes[player.lane], enemy)
         if _key[pygame.constants.K_ESCAPE]:
             print 'return to title'
             return 0
@@ -104,6 +109,7 @@ def game():
         # Draw ===================================================
         _display.blit(bg, (0, 0))
         tunnel.blit(_display, player)
+        enemy.blit(_display)
 
         for l in tunnel.lanes:
             for o in l:

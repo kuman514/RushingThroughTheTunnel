@@ -37,9 +37,6 @@ class DamagePlatform(GameOBJ):
         if super(DamagePlatform, self).judge() and self.lane == player.lane:
             player.damage()
 
-    def hit(self):
-        pass
-
 
 class GoldPlatform(GameOBJ):
     def __init__(self, LANE, APPEARANCE):
