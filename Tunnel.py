@@ -13,6 +13,12 @@ class Tunnel(object):
 
     def generateObj(self, type):
         num = random.randint(0, 5)
+        if len(self.lanes[num]) != 0:
+            while self.lanes[num][-1].pos >= 20:
+                num = random.randint(0, 5)
+                if len(self.lanes[num]) == 0:
+                    break
+
         if type[0] == 1:
             newobj = GameOBJ.DamagePlatform(num, type[1])
         elif type[0] == 2:
