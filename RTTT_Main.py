@@ -57,6 +57,8 @@ def game():
     enemy = Enemies.Enemy(100, 1, enemyimg)
 
     objTiming = 0
+    atkTiming = 0
+    movTiming = 0
 
     while True:
         # Event Handle ===========================================
@@ -73,11 +75,17 @@ def game():
         # Key Input ==============================================
         _key = pygame.key.get_pressed()
         if _key[pygame.constants.K_LEFT]:
-            player.lane = (player.lane - 1) % 6
+            if movTiming <= 0:
+                player.lane = (player.lane - 1) % 6
+                movTiming = 10
         if _key[pygame.constants.K_RIGHT]:
-            player.lane = (player.lane + 1) % 6
+            if movTiming <= 0:
+                player.lane = (player.lane + 1) % 6
+                movTiming = 10
         if _key[pygame.constants.K_SPACE]:
-            player.shoot(tunnel.lanes[player.lane], enemy)
+            if atkTiming <= 0:
+                player.shoot(tunnel.lanes[player.lane], enemy)
+                atkTiming = 30
         if _key[pygame.constants.K_ESCAPE]:
             print 'return to title'
             return 0
@@ -93,26 +101,34 @@ def game():
 
         if objTiming >= 60:
             # generate a new gold object
+            # TODO: goldGenTiming should differ on its stage
             tunnel.generateObj((2, goldobj))
             objTiming = 0
-
         if objTiming % 30 == 0:
             # generate a new damage object
+            # TODO: dmgGenTiming should differ on its stage
             tunnel.generateObj((1, dmgobj))
+        objTiming += 1
 
         if player.hp <= 0:
             return 1
 
-        objTiming += 1
+        # now a player can move and shoot not too repeatedly fast
+        if atkTiming > 0:
+            atkTiming -= 1
+        if movTiming > 0:
+            movTiming -= 1
         # ========================================================
 
         # Draw ===================================================
         _display.blit(bg, (0, 0))
+        # TODO: Tunnel.blit should have parameter (self, display, player, degree)
         tunnel.blit(_display, player)
         enemy.blit(_display)
 
         for l in tunnel.lanes:
             for o in l:
+                # TODO: GameOBJ.blit should have parameter (self, display, player, degree)
                 o.blit(_display, player)
 
         player.blit(_display)

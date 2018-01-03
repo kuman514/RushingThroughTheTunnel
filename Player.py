@@ -16,10 +16,15 @@ class Player(object):
         if type(lane) is list and type(enemy) is Enemies.Enemy:
             if len(lane) == 0:
                 enemy.hit()
-            elif type(lane[0]) is GameOBJ.DamagePlatform:
-                # further consideration required: a gold platform blocks player bullets
-                print 'dmgobj hit'
-                lane.remove(lane[0])
+            else:
+                for l in lane:
+                    if type(l) is GameOBJ.DamagePlatform:
+                        # now, a damage platform can be destroyed
+                        # without having a gold platform that blocks a player's attack
+                        print 'dmgobj hit'
+                        lane.remove(l)
+                        return
+                enemy.hit()
 
     def damage(self):
         self.combo = 0
