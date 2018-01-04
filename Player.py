@@ -28,15 +28,22 @@ class Player(object):
 
     def damage(self):
         self.combo = 0
-        self.hp -= 40
-        print 'player damaged, hp: %d' % (self.hp)
+        if self.hp >= 30:
+            self.hp -= 30
+        else:
+            self.hp = 0
+        print 'player damaged, hp: %d, combo: %d' % (self.hp, self.combo)
 
     def getgold(self):
         self.combo += 1
         if self.ammo < 10:
             self.ammo += 1
-        self.hp += 10
-        print 'player getting gold, hp: %d' % (self.hp)
+
+        if self.hp <= 90:
+            self.hp += 10
+        else:
+            self.hp = 100
+        print 'player getting gold, hp: %d, combo: %d' % (self.hp, self.combo)
 
     def blit(self, display):
         display.blit(self.appe, (550, 600))
