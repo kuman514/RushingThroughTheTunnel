@@ -5,12 +5,15 @@ import Enemies
 
 class Player(object):
     def __init__(self, HP, AMMO, APPEARANCE):
-        self.hp = HP
-        self.hpbar = pygame.image.load('playerhealth.png')
-        self.ammo = AMMO
-        self.appe = APPEARANCE
-        self.lane = 0
-        self.combo = 0
+        self.__hp = HP
+        self.__hpbar = pygame.image.load('playerhealth.png')
+        self.__ammo = AMMO
+        self.__appe = APPEARANCE
+        self.__lane = 0
+        self.__combo = 0
+
+    def turn(self, dir):
+        self.__lane = (self.__lane + dir) % 6
 
     def shoot(self, lane, enemy):
         if type(lane) is list and type(enemy) is Enemies.Enemy:
@@ -27,24 +30,33 @@ class Player(object):
                 enemy.hit()
 
     def damage(self):
-        self.combo = 0
-        if self.hp >= 30:
-            self.hp -= 30
+        self.__combo = 0
+        if self.__hp >= 30:
+            self.__hp -= 30
         else:
-            self.hp = 0
-        print 'player damaged, hp: %d, combo: %d' % (self.hp, self.combo)
+            self.__hp = 0
+        print 'player damaged, hp: %d, combo: %d' % (self.__hp, self.__combo)
 
-    def getgold(self):
-        self.combo += 1
-        if self.ammo < 10:
-            self.ammo += 1
+    def gold(self):
+        self.__combo += 1
+        if self.__ammo < 10:
+            self.__ammo += 1
 
-        if self.hp <= 90:
-            self.hp += 10
+        if self.__hp <= 90:
+            self.__hp += 10
         else:
-            self.hp = 100
-        print 'player getting gold, hp: %d, combo: %d' % (self.hp, self.combo)
+            self.__hp = 100
+        print 'player getting gold, hp: %d, combo: %d' % (self.__hp, self.__combo)
+
+    def checkGameOver(self):
+        if self.__hp <= 0:
+            return True
+        else:
+            return False
+
+    def getLane(self):
+        return self.__lane
 
     def blit(self, display):
-        display.blit(self.appe, (550, 600))
-        display.blit(self.hpbar, (200, 80))
+        display.blit(self.__appe, (550, 600))
+        display.blit(self.__hpbar, (200, 80))

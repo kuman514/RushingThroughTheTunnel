@@ -76,15 +76,15 @@ def game():
         _key = pygame.key.get_pressed()
         if _key[pygame.constants.K_LEFT]:
             if movTiming <= 0:
-                player.lane = (player.lane - 1) % 6
+                player.turn(-1)
                 movTiming = 10
         if _key[pygame.constants.K_RIGHT]:
             if movTiming <= 0:
-                player.lane = (player.lane + 1) % 6
+                player.turn(1)
                 movTiming = 10
         if _key[pygame.constants.K_SPACE]:
             if atkTiming <= 0:
-                player.shoot(tunnel.lanes[player.lane], enemy)
+                player.shoot(tunnel.getLane(player.getLane()), enemy)
                 atkTiming = 30
         if _key[pygame.constants.K_ESCAPE]:
             print 'return to title'
@@ -92,12 +92,7 @@ def game():
         # ========================================================
 
         # Object State Update ====================================
-        for l in tunnel.lanes:
-            for o in l:
-                o.forward(5)
-                o.judge(player)
-                if o.pos >= 300:
-                    tunnel.removeObj(o.lane, o)
+        tunnel.propagate(player)
 
         if objTiming >= 60:
             # generate a new gold object
@@ -110,7 +105,10 @@ def game():
             tunnel.generateObj((1, dmgobj))
         objTiming += 1
 
-        if player.hp <= 0:
+        if player.checkGameOver():
+            return 1
+
+        if enemy.defeat():
             return 1
 
         # now a player can move and shoot not too repeatedly fast
@@ -122,14 +120,8 @@ def game():
 
         # Draw ===================================================
         _display.blit(bg, (0, 0))
-        # TODO: Tunnel.blit should have parameter (self, display, player, degree)
         tunnel.blit(_display, player)
         enemy.blit(_display)
-
-        for l in tunnel.lanes:
-            for o in l:
-                # TODO: GameOBJ.blit should have parameter (self, display, player, degree)
-                o.blit(_display, player)
 
         player.blit(_display)
         pygame.display.update()
