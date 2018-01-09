@@ -16,10 +16,15 @@ class Player(object):
         self.__lane = (self.__lane + dir) % 6
 
     def shoot(self, lane, enemy):
+        if self.__ammo > 0:
+            self.__ammo -= 1
+            print "shoot it down! ammo: " + str(self.__ammo)
+        else:
+            print "no ammo"
+            return
+
         if type(lane) is list and type(enemy) is Enemies.Enemy:
-            if len(lane) == 0:
-                enemy.hit()
-            else:
+            if len(lane) != 0:
                 for l in lane:
                     if type(l) is GameOBJ.DamagePlatform:
                         # now, a damage platform can be destroyed
@@ -27,7 +32,7 @@ class Player(object):
                         print 'dmgobj hit'
                         lane.remove(l)
                         return
-                enemy.hit()
+            enemy.hit()
 
     def damage(self):
         self.__combo = 0
@@ -46,7 +51,7 @@ class Player(object):
             self.__hp += 10
         else:
             self.__hp = 100
-        print 'player getting gold, hp: %d, combo: %d' % (self.__hp, self.__combo)
+        print 'player getting gold, hp: %d, combo: %d, ammo: %d' % (self.__hp, self.__combo, self.__ammo)
 
     def checkGameOver(self):
         if self.__hp <= 0:
