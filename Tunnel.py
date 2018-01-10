@@ -38,12 +38,13 @@ class Tunnel(object):
     def getLane(self, curRotation):
         return self.__lanes[curRotation]
 
-    def blit(self, display, player):
-        tunnel_rot = pygame.transform.rotate(self.__appe, -60 * player.getLane())
+    def blit(self, display, player, mov):
+        # tunnel_rot = pygame.transform.rotate(self.__appe, -60 * player.getLane())
+        tunnel_rot = pygame.transform.rotate(self.__appe, -60 * player.getLane() + (6 * mov))
         tunnel_image_pos = tunnel_rot.get_rect()
         tunnel_image_pos.center = (640, 360)
         display.blit(tunnel_rot, tunnel_image_pos)
 
         for l in self.__lanes:
             for o in l:
-                o.blit(display, player)
+                o.blit(display, player, mov)

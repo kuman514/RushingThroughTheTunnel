@@ -15,11 +15,12 @@ class GameOBJ(object):
     def forward(self, speedPerFrame):
         self._pos += speedPerFrame
 
-    def blit(self, display, player):
+    def blit(self, display, player, mov):
         # scaled = pygame.transform.scale(self.appe, (120 * (self.pos/300), 120 * (self.pos/300)))
         scaledpos = self._appe.get_rect()
         scaledpos.center = (640, 360)
-        reladir = math.radians(60 * ((self._lane - player.getLane()) % 6))
+        # reladir = math.radians(60 * ((self._lane - player.getLane()) % 6))
+        reladir = math.radians(60 * ((self._lane - player.getLane()) % 6) + (6 * mov))
         display.blit(self._appe, (scaledpos[0] + int(math.sin(reladir) * self._pos), scaledpos[1] + int(math.cos(reladir) * self._pos)))
 
     def getPos(self):

@@ -59,6 +59,7 @@ def game():
     objTiming = 0
     atkTiming = 0
     movTiming = 0
+    movDirection = 0
 
     while True:
         # Event Handle ===========================================
@@ -76,11 +77,13 @@ def game():
         _key = pygame.key.get_pressed()
         if _key[pygame.constants.K_LEFT]:
             if movTiming <= 0:
-                player.turn(-1)
+                movDirection = -1
+                player.turn(movDirection)
                 movTiming = 10
         if _key[pygame.constants.K_RIGHT]:
             if movTiming <= 0:
-                player.turn(1)
+                movDirection = 1
+                player.turn(movDirection)
                 movTiming = 10
         if _key[pygame.constants.K_SPACE]:
             if atkTiming <= 0:
@@ -120,7 +123,7 @@ def game():
 
         # Draw ===================================================
         _display.blit(bg, (0, 0))
-        tunnel.blit(_display, player)
+        tunnel.blit(_display, player, movTiming * movDirection)
         enemy.blit(_display)
 
         player.blit(_display)
