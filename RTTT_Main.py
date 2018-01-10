@@ -99,12 +99,12 @@ def game():
 
         if objTiming >= 60:
             # generate a new gold object
-            # TODO: goldGenTiming should differ on its stage
+            # TODO: goldGenTiming(60) should be a variable
             tunnel.generateObj((2, goldobj))
             objTiming = 0
         if objTiming % 30 == 0:
             # generate a new damage object
-            # TODO: dmgGenTiming should differ on its stage
+            # TODO: dmgGenTiming(30) should be a variable
             tunnel.generateObj((1, dmgobj))
         objTiming += 1
 

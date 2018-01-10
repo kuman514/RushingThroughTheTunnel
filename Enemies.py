@@ -7,6 +7,7 @@ class Enemy(object):
     def hit(self):
         print 'enemy hit'
         # reduce enemy's hp
+        # TODO: Damage should be a variable
         self._hp -= 10
 
     def defeat(self):

@@ -27,8 +27,6 @@ class Player(object):
             if len(lane) != 0:
                 for l in lane:
                     if type(l) is GameOBJ.DamagePlatform:
-                        # now, a damage platform can be destroyed
-                        # without having a gold platform that blocks a player's attack
                         print 'dmgobj hit'
                         lane.remove(l)
                         return
@@ -36,6 +34,7 @@ class Player(object):
 
     def damage(self):
         self.__combo = 0
+        # TODO: Damage should be a variable
         if self.__hp >= 30:
             self.__hp -= 30
         else:
@@ -63,5 +62,6 @@ class Player(object):
         return self.__lane
 
     def blit(self, display):
+        # TODO: Lower(increase) the player's y position
         display.blit(self.__appe, (550, 600))
         display.blit(self.__hpbar, (200, 80))
