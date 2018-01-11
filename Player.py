@@ -61,6 +61,5 @@ class Player(object):
         return self.__lane
 
     def blit(self, display):
-        # TODO: Lower(increase) the player's y position
         display.blit(self.__appe, (550, 620))
-        display.blit(self.__hpbar, (200, 80))
+        pygame.draw.rect(display, (255, 0, 0), (200, 640 - int(560 * self.__hp/100), 40, int(560 * self.__hp/100)))
