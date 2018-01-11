@@ -53,13 +53,18 @@ def game():
     dmgobj = pygame.image.load('damageobj.png')
     goldobj = pygame.image.load('goldobj.png')
 
-    enemyimg = pygame.image.load('enemy.png')
-    enemy = Enemies.Enemy(100, 10, enemyimg)
-
     objTiming = 0
     atkTiming = 0
     movTiming = 0
+    addSpdTiming = 0
     movDirection = 0
+
+    # 3 tuples for each stage
+    # (0: level, 1: enemy, 2: dmgGenTiming, 3: goldGenTiming, 4: objSpeed, 5: addObjSpeed, 6: redundancy)
+    stages = ((1, Enemies.Enemy(100, 10, pygame.image.load('enemy1.png')), 30, 60, 5, 0, 20),
+              (2, Enemies.Enemy(120,  8, pygame.image.load('enemy2.png')), 30, 60, 5, 1, 20),
+              (3, Enemies.Enemy(150,  7, pygame.image.load('enemy3.png')), 30, 60, 5, 2, 20))
+    level = 1
 
     while True:
         # Event Handle ===========================================
@@ -87,7 +92,7 @@ def game():
                 movTiming = 10
         if _key[pygame.constants.K_SPACE]:
             if atkTiming <= 0:
-                player.shoot(tunnel.getLane(player.getLane()), enemy)
+                player.shoot(tunnel.getLane(player.getLane()), stages[level-1][1])
                 atkTiming = 30
         if _key[pygame.constants.K_ESCAPE]:
             print 'return to title'
@@ -97,21 +102,23 @@ def game():
         # Object State Update ====================================
         tunnel.propagate(player)
 
-        if objTiming >= 60:
-            # generate a new gold object
-            # TODO: goldGenTiming(60) should be a variable
-            tunnel.generateObj((2, goldobj))
-            objTiming = 0
-        if objTiming % 30 == 0:
+        if objTiming % stages[level-1][2] == 0:
             # generate a new damage object
             # TODO: dmgGenTiming(30) should be a variable
             tunnel.generateObj((1, dmgobj))
+        if objTiming % stages[level-1][3] == 0:
+            # generate a new gold object
+            # TODO: goldGenTiming(60) should be a variable
+            tunnel.generateObj((2, goldobj))
         objTiming += 1
 
         if player.checkGameOver():
             return 1
 
-        if enemy.defeat():
+        if stages[level-1][1].defeat():
+            level += 1
+
+        if level >= 4:
             return 1
 
         # now a player can move and shoot not too repeatedly fast
@@ -119,12 +126,14 @@ def game():
             atkTiming -= 1
         if movTiming > 0:
             movTiming -= 1
+        if objTiming >= 120:
+            objTiming = 0
         # ========================================================
 
         # Draw ===================================================
         _display.blit(bg, (0, 0))
         tunnel.blit(_display, player, movTiming * movDirection)
-        enemy.blit(_display)
+        stages[level - 1][1].blit(_display)
 
         player.blit(_display)
         pygame.display.update()

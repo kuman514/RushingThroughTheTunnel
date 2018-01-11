@@ -62,5 +62,5 @@ class Player(object):
 
     def blit(self, display):
         # TODO: Lower(increase) the player's y position
-        display.blit(self.__appe, (550, 600))
+        display.blit(self.__appe, (550, 620))
         display.blit(self.__hpbar, (200, 80))
