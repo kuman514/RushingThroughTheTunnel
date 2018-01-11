@@ -7,8 +7,7 @@ class GameOBJ(object):
         self._appe = APPEARANCE
 
     def judge(self):
-        # TODO: Judge position should not be 300
-        if self._pos >= 300:
+        if self._pos >= 275:
             return True
         else:
             return False

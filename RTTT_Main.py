@@ -54,7 +54,7 @@ def game():
     goldobj = pygame.image.load('goldobj.png')
 
     enemyimg = pygame.image.load('enemy.png')
-    enemy = Enemies.Enemy(100, 1, enemyimg)
+    enemy = Enemies.Enemy(100, 10, enemyimg)
 
     objTiming = 0
     atkTiming = 0

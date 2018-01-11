@@ -9,12 +9,13 @@ class Tunnel(object):
         self.__appe = APPEARANCE
         self.__lanes = [list(), list(), list(), list(), list(), list()]
         self.__speed = 5
+        self.__redundancy = 20
         random.seed(time.time())
 
     def generateObj(self, type):
         num = random.randint(0, 5)
         if len(self.__lanes[num]) != 0:
-            while self.__lanes[num][-1].getPos() <= 20:
+            while self.__lanes[num][-1].getPos() <= self.__redundancy:
                 num = random.randint(0, 5)
                 if len(self.__lanes[num]) == 0:
                     break
@@ -31,10 +32,9 @@ class Tunnel(object):
     def propagate(self, player):
         for l in self.__lanes:
             for o in l:
-                # TODO: the parameter of GameOBJ.forward() should be a variable
                 o.forward(self.__speed)
                 o.judge(player)
-                if o.getPos() >= 300:
+                if o.getPos() >= 275:
                     self.removeObj(o.getLane(), o)
 
     def getLane(self, curRotation):
@@ -42,6 +42,9 @@ class Tunnel(object):
 
     def setSpeed(self, speed):
         self.__speed = speed
+
+    def setRedundancy(self, red):
+        self.__redundancy = red
 
     def blit(self, display, player, mov):
         tunnel_rot = pygame.transform.rotate(self.__appe, -60 * player.getLane() + (6 * mov))

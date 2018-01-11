@@ -34,7 +34,6 @@ class Player(object):
 
     def damage(self):
         self.__combo = 0
-        # TODO: Damage should be a variable
         if self.__hp >= 30:
             self.__hp -= 30
         else:
