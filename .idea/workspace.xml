@@ -25,8 +25,8 @@
       <file leaf-file-name="RTTT_Main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RTTT_Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="118" column="24" lean-forward="false" selection-start-line="118" selection-start-column="24" selection-end-line="118" selection-end-column="24" />
+            <state relative-caret-position="1330">
+              <caret line="117" column="26" lean-forward="true" selection-start-line="117" selection-start-column="26" selection-end-line="117" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -35,7 +35,7 @@
       <file leaf-file-name="Tunnel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Tunnel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="988">
+            <state relative-caret-position="257">
               <caret line="52" column="50" lean-forward="false" selection-start-line="52" selection-start-column="50" selection-end-line="52" selection-end-column="50" />
               <folding />
             </state>
@@ -462,7 +462,14 @@
       <option name="project" value="LOCAL" />
       <updated>1515684454388</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="implemented hp, stage, speed, timing changing (bug fixed)">
+      <created>1515728592386</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1515728592386</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TodoView">
@@ -554,7 +561,8 @@
     <MESSAGE value="made enemy test img" />
     <MESSAGE value="testing stage speed" />
     <MESSAGE value="implemented hp, stage, speed, timing changing" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented hp, stage, speed, timing changing" />
+    <MESSAGE value="implemented hp, stage, speed, timing changing (bug fixed)" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented hp, stage, speed, timing changing (bug fixed)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -955,11 +963,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tunnel.py">
+    <entry file="file://$PROJECT_DIR$/Player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="988">
-          <caret line="52" column="50" lean-forward="false" selection-start-line="52" selection-start-column="50" selection-end-line="52" selection-end-column="50" />
-          <folding />
+        <state relative-caret-position="1159">
+          <caret line="63" column="45" lean-forward="true" selection-start-line="63" selection-start-column="45" selection-end-line="63" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -971,20 +981,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Player.py">
+    <entry file="file://$PROJECT_DIR$/Tunnel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1159">
-          <caret line="63" column="45" lean-forward="true" selection-start-line="63" selection-start-column="45" selection-end-line="63" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="257">
+          <caret line="52" column="50" lean-forward="false" selection-start-line="52" selection-start-column="50" selection-end-line="52" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RTTT_Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="118" column="24" lean-forward="false" selection-start-line="118" selection-start-column="24" selection-end-line="118" selection-end-column="24" />
+        <state relative-caret-position="1330">
+          <caret line="117" column="26" lean-forward="true" selection-start-line="117" selection-start-column="26" selection-end-line="117" selection-end-column="26" />
           <folding />
         </state>
       </provider>
