@@ -63,7 +63,7 @@ def game():
     # (0: level, 1: enemy, 2: dmgGenTiming, 3: goldGenTiming, 4: objSpeed, 5: addObjSpeed, 6: redundancy)
     stages = ((1, Enemies.Enemy(100, 10, pygame.image.load('enemy1.png')), 30, 60, 5, 0, 20),
               (2, Enemies.Enemy(120,  8, pygame.image.load('enemy2.png')), 20, 50, 7, 1, 30),
-              (3, Enemies.Enemy(150,  7, pygame.image.load('enemy3.png')), 15, 45, 9, 2, 40))
+              (3, Enemies.Enemy(150,  7, pygame.image.load('enemy3.png')), 10, 50, 9, 2, 40))
     level = 1
 
     while True:
@@ -115,11 +115,10 @@ def game():
 
         if stages[level-1][1].defeat():
             level += 1
+            if level >= 4:
+                return 1
             tunnel.setSpeed(stages[level-1][4])
             tunnel.setRedundancy(stages[level-1][6])
-
-        if level >= 4:
-            return 1
 
         # now a player can move and shoot not too repeatedly fast
         if atkTiming > 0:
