@@ -17,7 +17,7 @@ class GameOBJ(object):
         self._pos += speedPerFrame
 
     def blit(self, display, player, mov):
-        reladir = math.radians(60 * ((self._lane - player.getLane()) % 6) + (6 * mov))
+        reladir = math.radians(60 * ((self._lane - player.getLane()) % 6) + (12 * mov))
 
         scale = int(120*(self._pos/280.0))
         scaled = pygame.transform.scale(self._appe, (scale,  scale))

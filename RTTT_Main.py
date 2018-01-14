@@ -61,9 +61,9 @@ def game():
 
     # 3 tuples for each stage
     # (0: level, 1: enemy, 2: dmgGenTiming, 3: goldGenTiming, 4: objSpeed, 5: addObjSpeed, 6: redundancy)
-    stages = ((1, Enemies.Enemy(100, 10, pygame.image.load('enemy1.png')), 30, 60, 5, 0, 20),
-              (2, Enemies.Enemy(120,  8, pygame.image.load('enemy2.png')), 20, 50, 7, 1, 28),
-              (3, Enemies.Enemy(150,  7, pygame.image.load('enemy3.png')), 10, 50, 9, 2, 30))
+    stages = ((1, Enemies.Enemy(100, 10, pygame.image.load('enemy1.png')), 30, 50, 5, 0, 20),
+              (2, Enemies.Enemy(120,  8, pygame.image.load('enemy2.png')), 25, 45, 6, 1, 25),
+              (3, Enemies.Enemy(150,  7, pygame.image.load('enemy3.png')), 18, 40, 7, 2, 36))
     level = 1
 
     while True:
@@ -84,12 +84,12 @@ def game():
             if movTiming <= 0:
                 movDirection = -1
                 player.turn(movDirection)
-                movTiming = 10
+                movTiming = 5
         if _key[pygame.constants.K_RIGHT]:
             if movTiming <= 0:
                 movDirection = 1
                 player.turn(movDirection)
-                movTiming = 10
+                movTiming = 5
         if _key[pygame.constants.K_SPACE]:
             if atkTiming <= 0:
                 player.shoot(tunnel.getLane(player.getLane()), stages[level-1][1])
@@ -131,8 +131,7 @@ def game():
 
         # Draw ===================================================
         _display.blit(bg, (0, 0))
-        tunnel.blit(_display, player, movTiming * movDirection)
-        stages[level - 1][1].blit(_display)
+        tunnel.blit(_display, player, stages[level - 1][1], movTiming * movDirection)
 
         player.blit(_display)
         pygame.display.update()
