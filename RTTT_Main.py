@@ -56,14 +56,16 @@ def game():
     objTiming = 0
     atkTiming = 0
     movTiming = 0
-    addSpdTiming = 0
     movDirection = 0
 
+    attackGauge = 0
+    recentAttackLane = 0
+
     # 3 tuples for each stage
-    # (0: level, 1: enemy, 2: dmgGenTiming, 3: goldGenTiming, 4: objSpeed, 5: addObjSpeed, 6: redundancy)
-    stages = ((1, Enemies.Enemy(100, 10, pygame.image.load('enemy1.png')), 30, 50, 5, 0, 20),
-              (2, Enemies.Enemy(120,  8, pygame.image.load('enemy2.png')), 25, 45, 6, 1, 25),
-              (3, Enemies.Enemy(150,  7, pygame.image.load('enemy3.png')), 18, 40, 7, 2, 36))
+    # (0: level, 1: enemy, 2: dmgGenTiming, 3: goldGenTiming, 4: objSpeed, 5: attackDmg, 6: redundancy)
+    stages = ((1, Enemies.Enemy(100, 10, pygame.image.load('enemy1.png')), 30, 50, 5, 20, 20),
+              (2, Enemies.Enemy(120,  8, pygame.image.load('enemy2.png')), 25, 45, 6, 25, 25),
+              (3, Enemies.Enemy(150,  7, pygame.image.load('enemy3.png')), 18, 40, 7, 30, 36))
     level = 1
 
     while True:
@@ -94,6 +96,10 @@ def game():
             if atkTiming <= 0:
                 player.shoot(tunnel.getLane(player.getLane()), stages[level-1][1])
                 atkTiming = 30
+                if recentAttackLane != 0 and recentAttackLane == player.getLane():
+                    attackGauge += 30
+                else:
+                    attackGauge -= 10
         if _key[pygame.constants.K_ESCAPE]:
             print 'return to title'
             return 0
@@ -127,6 +133,8 @@ def game():
             movTiming -= 1
         if objTiming >= 120:
             objTiming = 0
+        if attackGauge < 0:
+            attackGauge = 0
         # ========================================================
 
         # Draw ===================================================
