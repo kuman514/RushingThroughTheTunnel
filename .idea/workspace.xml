@@ -25,8 +25,8 @@
       <file leaf-file-name="RTTT_Main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RTTT_Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2451">
-              <caret line="136" column="27" lean-forward="false" selection-start-line="136" selection-start-column="27" selection-end-line="136" selection-end-column="27" />
+            <state relative-caret-position="247">
+              <caret line="60" column="39" lean-forward="false" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -57,7 +57,7 @@
       <file leaf-file-name="Player.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Player.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1216">
+            <state relative-caret-position="684">
               <caret line="64" column="88" lean-forward="true" selection-start-line="64" selection-start-column="88" selection-end-line="64" selection-end-column="88" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
@@ -506,7 +506,14 @@
       <option name="project" value="LOCAL" />
       <updated>1516262275743</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="added disadvantage of shooting on a same lane">
+      <created>1516263381370</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1516263381370</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TodoView">
@@ -579,7 +586,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implemented tunnel rotation" />
     <MESSAGE value="Implemented tunnel rotation and object movement" />
     <MESSAGE value="Implemented judgement of two objects: damage object and gold object" />
     <MESSAGE value="Implemented randomly generating damage platforms and gold platforms" />
@@ -604,7 +610,8 @@
     <MESSAGE value="implemented objects getting close / Tunnel animated faster / Level updates / tons of more" />
     <MESSAGE value="playbg edited" />
     <MESSAGE value="shows ammo bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="shows ammo bar" />
+    <MESSAGE value="added disadvantage of shooting on a same lane" />
+    <option name="LAST_COMMIT_MESSAGE" value="added disadvantage of shooting on a same lane" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1023,13 +1030,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Player.py">
+    <entry file="file://$PROJECT_DIR$/Tunnel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1216">
-          <caret line="64" column="88" lean-forward="true" selection-start-line="64" selection-start-column="88" selection-end-line="64" selection-end-column="88" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="418">
+          <caret line="25" column="55" lean-forward="true" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1043,18 +1048,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tunnel.py">
+    <entry file="file://$PROJECT_DIR$/Player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="25" column="55" lean-forward="true" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
-          <folding />
+        <state relative-caret-position="684">
+          <caret line="64" column="88" lean-forward="true" selection-start-line="64" selection-start-column="88" selection-end-line="64" selection-end-column="88" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RTTT_Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2451">
-          <caret line="136" column="27" lean-forward="false" selection-start-line="136" selection-start-column="27" selection-end-line="136" selection-end-column="27" />
+        <state relative-caret-position="247">
+          <caret line="60" column="39" lean-forward="false" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
           <folding />
         </state>
       </provider>
