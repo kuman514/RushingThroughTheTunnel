@@ -62,4 +62,5 @@ class Player(object):
 
     def blit(self, display):
         display.blit(self.__appe, (550, 620))
+        pygame.draw.rect(display, (0, 255, 0), (550, 600, int(180 * self.__ammo/10), 5))
         pygame.draw.rect(display, (255, 0, 0), (200, 640 - int(560 * self.__hp/100), 40, int(560 * self.__hp/100)))
