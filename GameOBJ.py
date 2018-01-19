@@ -6,9 +6,11 @@ class GameOBJ(object):
         self._lane = LANE
         self._pos = 0
         self._appe = APPEARANCE
+        self._activateJudge = True
 
     def judge(self):
-        if self._pos >= 280:
+        if self._pos >= 280 and self._activateJudge:
+            self._activateJudge = False
             return True
         else:
             return False

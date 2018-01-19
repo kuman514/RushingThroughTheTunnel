@@ -34,7 +34,7 @@ class Tunnel(object):
             for o in l:
                 o.forward(self.__speed)
                 o.judge(player)
-                if o.getPos() >= 280:
+                if o.getPos() >= 1000:
                     self.removeObj(o.getLane(), o)
 
     def getLane(self, curRotation):
@@ -51,8 +51,8 @@ class Tunnel(object):
         tunnel_image_pos = tunnel_rot.get_rect()
         tunnel_image_pos.center = (640, 360)
         display.blit(tunnel_rot, tunnel_image_pos)
-        enemy.blit(display)
 
         for l in self.__lanes:
             for o in l[::-1]:
                 o.blit(display, player, mov)
+        enemy.blit(display)

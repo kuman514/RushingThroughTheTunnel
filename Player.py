@@ -21,7 +21,7 @@ class Player(object):
             print "shoot it down! ammo: " + str(self.__ammo)
         else:
             print "no ammo"
-            return
+            return False
 
         if type(lane) is list and type(enemy) is Enemies.Enemy:
             if len(lane) != 0:
@@ -29,8 +29,9 @@ class Player(object):
                     if type(l) is GameOBJ.DamagePlatform:
                         print 'dmgobj hit'
                         lane.remove(l)
-                        return
+                        return True
             enemy.hit()
+            return True
 
     def damage(self):
         self.__combo = 0
