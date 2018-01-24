@@ -1,6 +1,7 @@
 import math
 import pygame
 
+
 class GameOBJ(object):
     def __init__(self, LANE, APPEARANCE):
         self._lane = LANE
@@ -26,10 +27,6 @@ class GameOBJ(object):
         scaledpos = scaled.get_rect()
         scaledpos.center = (640, 360)
         display.blit(scaled, (scaledpos[0] + int(math.sin(reladir) * self._pos), scaledpos[1] + int(math.cos(reladir) * self._pos)))
-
-        #scaledpos = self._appe.get_rect()
-        #scaledpos.center = (640, 360)
-        #display.blit(self._appe, (scaledpos[0] + int(math.sin(reladir) * self._pos), scaledpos[1] + int(math.cos(reladir) * self._pos)))
 
     def getPos(self):
         return self._pos

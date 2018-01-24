@@ -6,7 +6,6 @@ import Enemies
 class Player(object):
     def __init__(self, HP, AMMO, APPEARANCE):
         self.__hp = HP
-        self.__hpbar = pygame.image.load('playerhealth.png')
         self.__ammo = AMMO
         self.__appe = APPEARANCE
         self.__lane = 0
@@ -62,6 +61,8 @@ class Player(object):
         return self.__lane
 
     def blit(self, display):
-        display.blit(self.__appe, (550, 620))
+        player_img_pos = self.__appe.get_rect()
+        player_img_pos.center = (640, 640)
+        display.blit(self.__appe, player_img_pos)
         pygame.draw.rect(display, (0, 255, 0), (550, 600, int(180 * self.__ammo/10), 5))
         pygame.draw.rect(display, (255, 0, 0), (200, 640 - int(560 * self.__hp/100), 40, int(560 * self.__hp/100)))
