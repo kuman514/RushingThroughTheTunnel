@@ -52,6 +52,7 @@ def game():
     player = Player.Player(100, 10, pygame.image.load('player.png'))
     dmgobj = pygame.image.load('damageobj.png')
     goldobj = pygame.image.load('goldobj.png')
+    healthbar = pygame.image.load('healthbar.png')
 
     objTiming = 0
     atkTiming = 0
@@ -145,9 +146,11 @@ def game():
 
         # Draw ===================================================
         _display.blit(bg, (0, 0))
-        tunnel.blit(_display, player, stages[level - 1][1], movTiming * movDirection)
+        tunnel.blit(_display, player, movTiming * movDirection)
 
+        _display.blit(healthbar, (0,0))
         player.blit(_display)
+        stages[level - 1][1].blit(_display)
         pygame.draw.rect(_display, (255, 0, 0), (550, 300, int(180 * attackGauge / 100), 5))
         pygame.display.update()
         # ========================================================

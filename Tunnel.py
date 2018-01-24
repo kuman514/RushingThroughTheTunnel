@@ -46,7 +46,7 @@ class Tunnel(object):
     def setRedundancy(self, red):
         self.__redundancy = red
 
-    def blit(self, display, player, enemy, mov):
+    def blit(self, display, player, mov):
         tunnel_rot = pygame.transform.rotate(self.__appe, -60 * player.getLane() + (12 * mov))
         tunnel_image_pos = tunnel_rot.get_rect()
         tunnel_image_pos.center = (640, 360)
@@ -55,4 +55,3 @@ class Tunnel(object):
         for l in self.__lanes:
             for o in l[::-1]:
                 o.blit(display, player, mov)
-        enemy.blit(display)
