@@ -39,7 +39,7 @@ class DamagePlatform(GameOBJ):
     def __init__(self, LANE, APPEARANCE):
         super(DamagePlatform, self).__init__(LANE, APPEARANCE)
 
-    def judge(self, player):
+    def judge(self, player, mov):
         if super(DamagePlatform, self).judge() and self._lane == player.getLane():
             player.damage()
 
@@ -48,6 +48,6 @@ class GoldPlatform(GameOBJ):
     def __init__(self, LANE, APPEARANCE):
         super(GoldPlatform, self).__init__(LANE, APPEARANCE)
 
-    def judge(self, player):
+    def judge(self, player, mov):
         if super(GoldPlatform, self).judge() and self._lane == player.getLane():
             player.gold()

@@ -29,11 +29,11 @@ class Tunnel(object):
     def removeObj(self, lane, obj):
         self.__lanes[lane].remove(obj)
 
-    def propagate(self, player):
+    def propagate(self, player, mov):
         for l in self.__lanes:
             for o in l:
                 o.forward(self.__speed)
-                o.judge(player)
+                o.judge(player, mov)
                 if o.getPos() >= 1000:
                     self.removeObj(o.getLane(), o)
 

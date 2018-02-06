@@ -7,6 +7,7 @@ import Player
 import Enemies
 import GameOBJ
 import Tunnel
+import Additional
 
 
 TargetFPS = 60
@@ -18,6 +19,7 @@ clock = pygame.time.Clock()
 
 def main():
     title = pygame.image.load('title.png')
+    keyInputTiming = 10
     while True:
         # Event Handle
         for Event in pygame.event.get():
@@ -28,15 +30,26 @@ def main():
         # Key Input
         _key = pygame.key.get_pressed()
         if _key[pygame.constants.K_RETURN]:
-            print 'game start'
-            if game() == 1:
-                print 'game over'
-        elif _key[pygame.constants.K_q]:
-            print 'exit to windows'
-            pygame.quit()
-            sys.exit()
+            if keyInputTiming <= 0:
+                print 'game start'
+                result = game()
+                if result == 1:
+                    print 'game over'
+                elif result == 2:
+                    Additional.Story(5).blit(_display, clock, TargetFPS)
+            keyInputTiming = 10
+        elif _key[pygame.constants.K_ESCAPE]:
+            if keyInputTiming <= 0:
+                print 'exit to windows'
+                pygame.quit()
+                sys.exit()
+        elif _key[pygame.constants.K_c]:
+            if keyInputTiming <= 0:
+                Additional.Story(5).blit(_display, clock, TargetFPS)
+                keyInputTiming = 10
 
-        # Object State Update
+        if keyInputTiming > 0:
+            keyInputTiming -= 1
 
         # Display Init
         _display.fill(0x000000)
@@ -59,16 +72,16 @@ def game():
     atkTiming = 0
     movTiming = 0
     movDirection = 0
-
-    recentAttackLane = -1
     attackGauge = 0
 
     # 3 tuples for each stage
     # (0: level, 1: enemy, 2: dmgGenTiming, 3: goldGenTiming, 4: objSpeed, 5: attackGauge, 6: redundancy)
-    stages = ((1, Enemies.Enemy(100, 10, pygame.image.load('enemy1.png')), 30, 50, 5, 30, 20),
-              (2, Enemies.Enemy(120,  8, pygame.image.load('enemy2.png')), 25, 45, 6, 40, 25),
-              (3, Enemies.Enemy(150,  7, pygame.image.load('enemy3.png')), 18, 40, 7, 55, 36))
+    stages = ((1, Enemies.Enemy(100, 10, pygame.image.load('enemy1.png')), 30, 50, 5, 1, 20),
+              (2, Enemies.Enemy(120,  8, pygame.image.load('enemy2.png')), 25, 45, 6, 1, 25),
+              (3, Enemies.Enemy(150,  7, pygame.image.load('enemy3.png')), 18, 40, 7, 1, 36))
     level = 1
+
+    Additional.Story(1).blit(_display, clock, TargetFPS)
 
     while True:
         # Event Handle ===========================================
@@ -97,23 +110,15 @@ def game():
         if _key[pygame.constants.K_SPACE]:
             if atkTiming <= 0:
                 if player.shoot(tunnel.getLane(player.getLane()), stages[level-1][1]):
-                    atkTiming = 10
-                    if recentAttackLane == player.getLane():
-                        if attackGauge >= 100:
-                            attackGauge = 50
-                            player.damage()
-                        else:
-                            attackGauge += stages[level-1][5]
-                    else:
-                        attackGauge -= 10
-                    recentAttackLane = player.getLane()
+                    atkTiming = 8
+                    attackGauge = max(attackGauge - 18, 0)
         if _key[pygame.constants.K_ESCAPE]:
             print 'return to title'
             return 0
         # ========================================================
 
         # Object State Update ====================================
-        tunnel.propagate(player)
+        tunnel.propagate(player, movTiming)
 
         if objTiming % stages[level-1][2] == 0:
             # generate a new damage object
@@ -128,20 +133,24 @@ def game():
 
         if stages[level-1][1].defeat():
             level += 1
+            Additional.Story(level).blit(_display, clock, TargetFPS)
             attackGauge = 0
+            player.resetAmmo()
             if level >= 4:
-                return 1
+                return 2
             tunnel.setSpeed(stages[level-1][4])
             tunnel.setRedundancy(stages[level-1][6])
 
-        # now a player can move and shoot not too repeatedly fast
         if atkTiming > 0:
             atkTiming -= 1
         if movTiming > 0:
             movTiming -= 1
+        else:
+            attackGauge += stages[level-1][5]
         if objTiming >= 120:
             objTiming = 0
-        if attackGauge < 0:
+        if attackGauge >= 100:
+            player.damage()
             attackGauge = 0
         # ========================================================
 

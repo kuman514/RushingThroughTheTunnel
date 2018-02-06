@@ -60,6 +60,9 @@ class Player(object):
     def getLane(self):
         return self.__lane
 
+    def resetAmmo(self):
+        self.__ammo = 10
+
     def blit(self, display):
         player_img_pos = self.__appe.get_rect()
         player_img_pos.center = (640, 640)
