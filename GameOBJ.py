@@ -34,6 +34,9 @@ class GameOBJ(object):
     def getLane(self):
         return self._lane
 
+    def getJudgeable(self):
+        return self._activateJudge
+
 
 class DamagePlatform(GameOBJ):
     def __init__(self, LANE, APPEARANCE):
