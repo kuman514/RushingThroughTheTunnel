@@ -25,7 +25,7 @@ class Player(object):
         if type(lane) is list and type(enemy) is Enemies.Enemy:
             if len(lane) != 0:
                 for l in lane:
-                    if type(l) is GameOBJ.DamagePlatform:
+                    if type(l) is GameOBJ.DamagePlatform and l.getPos() in range(60, 280):
                         print 'dmgobj hit'
                         lane.remove(l)
                         return True

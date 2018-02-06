@@ -76,9 +76,9 @@ def game():
 
     # 3 tuples for each stage
     # (0: level, 1: enemy, 2: dmgGenTiming, 3: goldGenTiming, 4: objSpeed, 5: attackGauge, 6: redundancy)
-    stages = ((1, Enemies.Enemy(100, 10, pygame.image.load('enemy1.png')), 30, 50, 5, 1, 20),
-              (2, Enemies.Enemy(120,  8, pygame.image.load('enemy2.png')), 25, 45, 6, 1, 25),
-              (3, Enemies.Enemy(150,  7, pygame.image.load('enemy3.png')), 18, 40, 7, 1, 36))
+    stages = ((1, Enemies.Enemy(100, 10, pygame.image.load('enemy1.png')), 25, 50, 6, 1, 20),
+              (2, Enemies.Enemy(120,  8, pygame.image.load('enemy2.png')), 20, 45, 7, 1, 25),
+              (3, Enemies.Enemy(150,  7, pygame.image.load('enemy3.png')), 15, 40, 7, 1, 36))
     level = 1
 
     Additional.Story(1).blit(_display, clock, TargetFPS)
