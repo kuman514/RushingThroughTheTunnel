@@ -10,7 +10,7 @@ class GameOBJ(object):
         self._activateJudge = True
 
     def judge(self):
-        if self._pos >= 280 and self._activateJudge:
+        if self._pos >= 277 and self._activateJudge:
             self._activateJudge = False
             return True
         else:
@@ -43,7 +43,7 @@ class DamagePlatform(GameOBJ):
         super(DamagePlatform, self).__init__(LANE, APPEARANCE)
 
     def judge(self, player, mov):
-        if super(DamagePlatform, self).judge() and self._lane == player.getLane() and mov > 0:
+        if super(DamagePlatform, self).judge() and self._lane == player.getLane() and mov <= 1:
             player.damage()
 
 
@@ -52,5 +52,5 @@ class GoldPlatform(GameOBJ):
         super(GoldPlatform, self).__init__(LANE, APPEARANCE)
 
     def judge(self, player, mov):
-        if super(GoldPlatform, self).judge() and self._lane == player.getLane() and mov > 0:
+        if super(GoldPlatform, self).judge() and self._lane == player.getLane() and mov <= 1:
             player.gold()
