@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1660f813-abe9-4815-87c5-3c1fd40a5488" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/RTTT_Main.py" afterPath="$PROJECT_DIR$/RTTT_Main.py" />
       <change beforePath="$PROJECT_DIR$/credits.png" afterPath="$PROJECT_DIR$/credits.png" />
       <change beforePath="$PROJECT_DIR$/title.png" afterPath="$PROJECT_DIR$/title.png" />
     </list>
@@ -627,7 +626,14 @@
       <option name="project" value="LOCAL" />
       <updated>1518662531694</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="level edit">
+      <created>1518663293213</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1518663293213</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TodoView">
@@ -700,7 +706,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implemented a player's ammo and changed some part of tunnel" />
     <MESSAGE value="Implemented animated rotation" />
     <MESSAGE value="Implemented animated rotation (TODO refered)" />
     <MESSAGE value="changed some constants into variables" />
@@ -725,7 +730,8 @@
     <MESSAGE value="bug fix" />
     <MESSAGE value="story added, resources edited, implemented no damage while moving, tons more" />
     <MESSAGE value="bug fixed, judge edited" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fixed, judge edited" />
+    <MESSAGE value="level edit" />
+    <option name="LAST_COMMIT_MESSAGE" value="level edit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
