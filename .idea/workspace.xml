@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1660f813-abe9-4815-87c5-3c1fd40a5488" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/GameOBJ.py" afterPath="$PROJECT_DIR$/GameOBJ.py" />
+      <change beforePath="$PROJECT_DIR$/RTTT_Main.py" afterPath="$PROJECT_DIR$/RTTT_Main.py" />
       <change beforePath="$PROJECT_DIR$/credits.png" afterPath="$PROJECT_DIR$/credits.png" />
       <change beforePath="$PROJECT_DIR$/title.png" afterPath="$PROJECT_DIR$/title.png" />
     </list>
@@ -24,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RTTT_Main.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RTTT_Main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RTTT_Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-104">
-              <caret line="120" column="42" lean-forward="false" selection-start-line="120" selection-start-column="42" selection-end-line="120" selection-end-column="42" />
+            <state relative-caret-position="352">
+              <caret line="80" column="85" lean-forward="false" selection-start-line="80" selection-start-column="85" selection-end-line="80" selection-end-column="85" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -48,7 +48,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameOBJ.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameOBJ.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GameOBJ.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1026">
@@ -124,8 +124,8 @@
         <option value="$PROJECT_DIR$/Tunnel.py" />
         <option value="$PROJECT_DIR$/Additional.py" />
         <option value="$PROJECT_DIR$/Player.py" />
-        <option value="$PROJECT_DIR$/RTTT_Main.py" />
         <option value="$PROJECT_DIR$/GameOBJ.py" />
+        <option value="$PROJECT_DIR$/RTTT_Main.py" />
       </list>
     </option>
   </component>
@@ -620,7 +620,14 @@
       <option name="project" value="LOCAL" />
       <updated>1518610019145</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="bug fixed, judge edited">
+      <created>1518662531694</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1518662531694</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TodoView">
@@ -693,7 +700,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed enemy's color" />
     <MESSAGE value="Implemented a player's ammo and changed some part of tunnel" />
     <MESSAGE value="Implemented animated rotation" />
     <MESSAGE value="Implemented animated rotation (TODO refered)" />
@@ -718,7 +724,8 @@
     <MESSAGE value="level balancing, added story files" />
     <MESSAGE value="bug fix" />
     <MESSAGE value="story added, resources edited, implemented no damage while moving, tons more" />
-    <option name="LAST_COMMIT_MESSAGE" value="story added, resources edited, implemented no damage while moving, tons more" />
+    <MESSAGE value="bug fixed, judge edited" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fixed, judge edited" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1183,16 +1190,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RTTT_Main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-104">
-          <caret line="120" column="42" lean-forward="false" selection-start-line="120" selection-start-column="42" selection-end-line="120" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Tunnel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="428">
@@ -1209,6 +1206,16 @@
           <caret line="54" column="92" lean-forward="false" selection-start-line="54" selection-start-column="92" selection-end-line="54" selection-end-column="92" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RTTT_Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="80" column="85" lean-forward="false" selection-start-line="80" selection-start-column="85" selection-end-line="80" selection-end-column="85" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
